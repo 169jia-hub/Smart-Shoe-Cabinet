@@ -202,9 +202,9 @@ int main(void)
     u8 t=0, h=0;
     u16 mq=0, lux=0, pm25_val=0; 
     u8 timer_cnt = 0; 
-    u8 soft_sec_cnt = 0; 
     
     SystemInit(); delay_init();
+    RTC_Init();
     uart_init(9600); 
     Relay_Init(); 
     Adc_Init(); Infrared_Init();
@@ -215,21 +215,8 @@ int main(void)
 
     while(1)
     {
-        // === 1. 软件时钟走时逻辑 ===
-        soft_sec_cnt++;
-        if(soft_sec_cnt >= 100)  
-        {
-            soft_sec_cnt = 0;
-            calendar.sec++;               
-            if(calendar.sec >= 60) {
-                calendar.sec = 0;
-                calendar.min++;           
-                if(calendar.min >= 60) {
-                    calendar.min = 0;
-                    calendar.hour = (calendar.hour + 1) % 24; 
-                }
-            }
-        }
+        // === 1. 使用硬件RTC获取标准时间 ===
+        RTC_Get();
         
         // === 2. 传感器扫描 ===
         mq = Get_Adc_Average(4, 5);  
@@ -329,6 +316,7 @@ int main(void)
                             if(sub_menu_index==0) calendar.hour = (calendar.hour + change + 24) % 24;
                             if(sub_menu_index==1) calendar.min = (calendar.min + change + 60) % 60;
                             if(sub_menu_index==2) calendar.sec = (calendar.sec + change + 60) % 60;
+                            RTC_Set(0, 0, 0, calendar.hour, calendar.min, calendar.sec);
                             break;
                         case 1: 
                             if(sub_menu_index==0) temp_limit_min += change;

@@ -22,11 +22,21 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 c:\Users\Universe\Desktop\Smart Shoe Cabinet\S.uvprojx
-Project File Date:  02/15/2026
+Project File Date:  04/05/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\keil_core\ARM\arm5_compiler\Bin'
 Build target 'Target 1'
+compiling bsp_key.c...
+.\SYSTEM\sys.h(41): warning:  #1-D: last line of file ends without a newline
+  #endif
+HANDWARE\board_config.h(33): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\SYSTEM\delay.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+HANDWARE\bsp_key.c(61): warning:  #1-D: last line of file ends without a newline
+  }
+HANDWARE\bsp_key.c: 4 warnings, 0 errors
 compiling main.c...
 .\SYSTEM\sys.h(41): warning:  #1-D: last line of file ends without a newline
   #endif
@@ -54,12 +64,12 @@ USER\main.c(121): warning:  #167-D: argument of type "char *" is incompatible wi
               OLED_ShowString(16, 2+i*2, items[start_i+i], 16);
 USER\main.c(145): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
               OLED_ShowString(16, i*2, menu_strs[start_i + i], 16);
-USER\main.c(367): warning:  #1-D: last line of file ends without a newline
+USER\main.c(355): warning:  #1-D: last line of file ends without a newline
   }
 USER\main.c: 14 warnings, 0 errors
 linking...
-Program Size: Code=9448 RO-data=2312 RW-data=56 ZI-data=1832  
-".\Objects\S.axf" - 0 Error(s), 14 Warning(s).
+Program Size: Code=9944 RO-data=2312 RW-data=56 ZI-data=1832  
+".\Objects\S.axf" - 0 Error(s), 18 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -72,7 +82,7 @@ Package Vendor: Keil
   D:/keil_pack/Keil/STM32F1xx_DFP/2.4.0/Device/Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
